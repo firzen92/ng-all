@@ -9,11 +9,13 @@ export class AlgoOneComponent implements OnInit {
 
   arr = [1,2,4,5,7,8,9]
   arr2 = [1]
+  string = "ABCD"
 
   constructor() { }
 
   ngOnInit() {
     console.log(this.missingNumber(this.arr2, 2));
+    console.log(this.permut(this.string));
   }
 
   missingNumber(array,n){
@@ -32,7 +34,30 @@ export class AlgoOneComponent implements OnInit {
         } 
     }
     return i;
-}
+  }
+  
+  permut(S) {
+    if(S.length < 2) {
+      return S;
+    }
+    var permutations = [];
+    for(let i=0; i<S.length; i++) {
+      let char = S[i];
+
+      if(S.indexOf(char) != i) 
+        continue;
+
+      let remainingPart = S.slice(0,i) + S.slice(i+1, S.length);
+
+      for(let subString of this.permut(remainingPart)) {
+        permutations.push(char + subString);
+      }
+    }
+
+    return permutations;
+  }
+
+
 
 
 }
