@@ -18,6 +18,20 @@ export class AlgoOneComponent implements OnInit {
     console.log(this.permut(this.string));
   }
 
+
+  removeDupes(S) {
+    let newStr = "";
+    for(let i=0; i<S.length; i++) {
+      var char = S[i];
+      if(S.indexOf(char) == i) 
+        newStr += char;
+    }
+    return newStr;
+  }
+
+
+
+
   missingNumber(array,n){
     //code here
     let newArr = new Array(n).fill(false);
