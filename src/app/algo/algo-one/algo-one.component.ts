@@ -17,8 +17,32 @@ export class AlgoOneComponent implements OnInit {
     console.log(this.missingNumber(this.arr2, 2));
     console.log(this.permut(this.string));
     console.log(this.balanceNumber("33271344"))
+    this.combination([1,2,3,4,5,6,7,8,9], 10);
   }
 
+
+  mainFunction(l, sum, K, local, A) {
+    if(sum == K) {
+      console.log(local);
+      return;
+    }
+    for(let i=l; i<A.length; i++) {
+      if(A[i] + sum > K) 
+        continue;
+
+      if(i>l && A[i-1] == A[i])
+        continue;
+      local.push(A[i]);
+      this.mainFunction(i+1, sum + A[i], K, local, A);
+      local.pop();
+    }
+  }
+
+  combination(A, K) {
+    let local = [];
+    let sortedArr = A.sort((a, b) => a-b);
+    this.mainFunction(0, 0, K, local, sortedArr);
+  }
 
   removeDupes(S) {
     let newStr = "";
@@ -41,6 +65,7 @@ export class AlgoOneComponent implements OnInit {
     return leftPart == rightPart;
 
   }
+
 
 
   missingNumber(array,n){
