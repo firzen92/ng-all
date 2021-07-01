@@ -16,6 +16,7 @@ export class AlgoOneComponent implements OnInit {
   ngOnInit() {
     console.log(this.missingNumber(this.arr2, 2));
     console.log(this.permut(this.string));
+    console.log(this.balanceNumber("33271344"))
   }
 
 
@@ -29,7 +30,17 @@ export class AlgoOneComponent implements OnInit {
     return newStr;
   }
 
+  balanceNumber(numb) {
+    let split = numb.split('');
+    let leftPart = 0;
+    let rightPart = 0;
+    for(let i=0; i<Math.floor(split.length/2); i++) {
+      leftPart += +split[i];
+      rightPart += +split[split.length-i-1];
+    }
+    return leftPart == rightPart;
 
+  }
 
 
   missingNumber(array,n){
