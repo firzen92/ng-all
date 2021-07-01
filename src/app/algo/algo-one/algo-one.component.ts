@@ -21,6 +21,26 @@ export class AlgoOneComponent implements OnInit {
   }
 
 
+  increment(arr,n){
+    function main(arr, n) {
+        if(arr[n] < 9) {
+            arr[n] += 1;
+            return;
+        } else {
+            arr[n] = 0;
+            return main(arr, n-1);
+        }
+    }
+    let newArr = [0, ...arr];
+    main(newArr, n-1);
+    if(newArr[0] === 0) {
+        return newArr.slice(1);
+    } else {
+        return newArr;
+    }    
+  }
+
+
   mainFunction(l, sum, K, local, A) {
     if(sum == K) {
       console.log(local);
